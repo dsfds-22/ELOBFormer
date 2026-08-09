@@ -1,0 +1,4 @@
+-r requirements.txt
+mmcv-lite==2.1.0
+mmengine==0.10.7
+mmsegmentation==1.2.2

@@ -1,0 +1,18 @@
+{
+  "split": "val",
+  "lane_source": "model",
+  "samples": 524,
+  "threshold_mode": "specificity_constrained",
+  "auc": 0.9125042282106213,
+  "threshold": 0.05,
+  "accuracy": 0.816793893129771,
+  "precision": 0.9363957597173145,
+  "recall": 0.7725947521865889,
+  "specificity": 0.9005524861878453,
+  "balanced_accuracy": 0.8365736191872171,
+  "f1": 0.8466453674121406,
+  "tp": 265,
+  "tn": 163,
+  "fp": 18,
+  "fn": 78
+}

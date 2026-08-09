@@ -1,0 +1,23 @@
+﻿{
+    "input_roots":  [
+                        "development_labelme/train_val",
+                        "development_labelme/test"
+                    ],
+    "output_root":  "datasets/emergency_outer_boundary_grouped_fixed12_v2_clean601",
+    "converted":  4127,
+    "with_boundary":  3260,
+    "without_boundary":  867,
+    "missing_image":  0,
+    "bad_json":  0,
+    "fixed_band_width":  12,
+    "band_min_width":  4,
+    "band_max_width":  12,
+    "band_width_gamma":  1.0,
+    "edge_width":  5,
+    "heatmap_radius":  9.0,
+    "heatmap_sigma":  3.0,
+    "boundary_labels":  [
+                            "right_boundary",
+                            "emergency_outer_boundary"
+                        ]
+}

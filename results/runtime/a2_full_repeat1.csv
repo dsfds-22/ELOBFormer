@@ -1,0 +1,2 @@
+model,params_m,images,per_image_ms,fps,peak_memory_mb,band_max_abs_diff
+A2 Full r1,15.448003,100,13.10822699975688,76.28796785549618,483.0556640625,0.0

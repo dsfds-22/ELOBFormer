@@ -1,0 +1,22 @@
+﻿{
+    "input_roots":  [
+                        "final_test_labelme"
+                    ],
+    "output_root":  "datasets/emergency_outer_boundary_final_test_fixed12_v1_frozen300",
+    "converted":  300,
+    "with_boundary":  208,
+    "without_boundary":  92,
+    "missing_image":  0,
+    "bad_json":  0,
+    "fixed_band_width":  12,
+    "band_min_width":  4,
+    "band_max_width":  12,
+    "band_width_gamma":  1.0,
+    "edge_width":  5,
+    "heatmap_radius":  9.0,
+    "heatmap_sigma":  3.0,
+    "boundary_labels":  [
+                            "right_boundary",
+                            "emergency_outer_boundary"
+                        ]
+}

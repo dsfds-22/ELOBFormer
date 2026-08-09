@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: "Emergency Outer Boundary Detection"
+message: "If you use this code or dataset, please cite the associated paper."
+type: software
+authors:
+  - family-names: "AYC"
+version: 1.0.0
+date-released: 2026-08-09
+license: MIT

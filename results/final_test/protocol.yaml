@@ -1,0 +1,47 @@
+protocol_version: final_test_v1_frozen300
+status: frozen_before_inference
+frozen_at: 2026-08-06
+dataset:
+  source: final_test_labelme
+  converted_root: datasets/emergency_outer_boundary_final_test_fixed12_v1_frozen300
+  split: test
+  samples: 300
+  positives: 208
+  negatives: 92
+  scene_groups: [050, 051, 052, 053, 054, 055, 056, 057, 058, 059, 060, 061, 062]
+  fixed_band_width: 12
+subsets:
+  positive: [052, 053, 054, 055, 056, 057, 058, 060, 061]
+  hard_negative: [059, 062]
+  ood_negative: [050, 051]
+inference:
+  binary_threshold: 0.5
+  exported_values: [0, 255]
+  boundary_tolerance_px: 5
+models:
+  A0:
+    config: configs/final_test/a0_band_final_test_frozen300.yaml
+    checkpoint: weights/a0_band_only.pt
+  A1:
+    config: configs/final_test/a1_band_edge03_final_test_frozen300.yaml
+    checkpoint: weights/a1_band_edge03.pt
+  A2:
+    config: configs/final_test/a2_band_edge03_heatmap01_final_test_frozen300.yaml
+    checkpoint: weights/a2_band_edge03_heatmap01.pt
+  DeepLabV3Plus_R50:
+    config: third_party/mmseg_emergency_boundary/configs/deeplabv3plus_r50_boundary_80epoch.py
+    checkpoint: weights/deeplabv3plus_r50.pth
+  PIDNet_S:
+    config: third_party/mmseg_emergency_boundary/configs/pidnet_s_boundary_80epoch.py
+    checkpoint: weights/pidnet_s.pth
+gate:
+  config: configs/final_test/v4_3_final_gate_final_test_frozen300.yaml
+  ratio_min: 0.30
+  ratio_max: 2.0
+  band_threshold: 0.5
+policy:
+  tune_after_opening_results: false
+  merge_into_development_data: false
+  report_frame_metrics: true
+  report_scene_macro_metrics: true
+  report_subset_metrics: true

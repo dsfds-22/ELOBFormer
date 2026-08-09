@@ -1,0 +1,2 @@
+model,params_m,images,per_image_ms,fps,peak_memory_mb,band_max_abs_diff
+A1 Edge0.3 r3,14.857154,100,11.825307000253815,84.5644007363645,474.775390625,0.0

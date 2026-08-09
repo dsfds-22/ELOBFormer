@@ -1,0 +1,49 @@
+dataset:
+  root: datasets/emergency_outer_boundary_grouped_fixed12_v2_clean601
+  train_csv: splits/train.csv
+  val_csv: splits/val.csv
+  test_csv: splits/test.csv
+  image_size: [450, 800]
+  image_mean: [0.485, 0.456, 0.406]
+  image_std: [0.229, 0.224, 0.225]
+
+model:
+  name: segformer_b1_band_edge_heatmap_aux
+  variant: b1
+  decoder_dim: 256
+  dropout: 0.1
+  pretrained_backbone: weights/pretrained/segformer-B1.pth
+
+loss:
+  band: 1.0
+  edge: 0.3
+  heatmap: 0.1
+  heatmap_positive_weight: 4.0
+  heatmap_beta: 0.1
+
+train:
+  output_dir: runs/emergency_boundary/segformer_b1_band_edge03_heatmap01_grouped_fixed12_sqrt_scene_v1_80epoch_es15
+  epochs: 80
+  batch_size: 4
+  augmentation: basic
+  early_stop_patience: 15
+  evaluate_test_after_training: true
+  test_threshold: 0.5
+  num_workers: 0
+  lr: 0.0001
+  weight_decay: 0.01
+  amp: true
+  seed: 42
+  log_interval: 20
+  val_interval: 1
+  save_interval: 5
+  max_train_steps: 0
+  max_val_steps: 0
+  sampling:
+    mode: sqrt_scene
+    replacement: true
+    num_samples: 0
+    group_fields:
+      - reviewed_segment_id
+      - capture_session
+      - prefix

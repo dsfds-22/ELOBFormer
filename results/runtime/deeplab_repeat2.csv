@@ -1,0 +1,2 @@
+model,params_m,images,per_image_ms,fps,peak_memory_mb,band_max_abs_diff
+DeepLabV3+ R50 r2,43.576788,100,29.75408600002993,33.60882938897851,556.67236328125,

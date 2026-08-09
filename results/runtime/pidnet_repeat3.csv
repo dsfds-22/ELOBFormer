@@ -1,0 +1,2 @@
+model,params_m,images,per_image_ms,fps,peak_memory_mb,band_max_abs_diff
+PIDNet-S r3,7.716485,100,6.097696999786422,163.9963415753564,61.74755859375,

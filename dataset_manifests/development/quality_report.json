@@ -1,0 +1,49 @@
+﻿{
+    "root":  "datasets/emergency_outer_boundary_grouped_fixed12_v2_clean601",
+    "samples":  4127,
+    "positive_samples":  3260,
+    "negative_samples":  867,
+    "expected_size":  [
+                          800,
+                          450
+                      ],
+    "band_values":  [
+                        0,
+                        255
+                    ],
+    "edge_values":  [
+                        0,
+                        255
+                    ],
+    "positive_band_pixels":  {
+                                 "min":  1583,
+                                 "mean":  4820.752147239264,
+                                 "max":  6990
+                             },
+    "positive_edge_pixels":  {
+                                 "min":  821,
+                                 "mean":  2564.6398773006135,
+                                 "max":  3721
+                             },
+    "splits":  {
+                   "train":  {
+                                 "samples":  3002,
+                                 "positive":  2376,
+                                 "negative":  626
+                             },
+                   "val":  {
+                               "samples":  524,
+                               "positive":  343,
+                               "negative":  181
+                           },
+                   "test":  {
+                                "samples":  601,
+                                "positive":  541,
+                                "negative":  60
+                            }
+               },
+    "issue_count":  0,
+    "issues":  [
+
+               ]
+}

@@ -1,0 +1,2 @@
+model,params_m,images,per_image_ms,fps,peak_memory_mb,band_max_abs_diff
+A0 Band-only r1,13.675713,100,8.835493999940809,113.17986294899858,456.78271484375,0.0

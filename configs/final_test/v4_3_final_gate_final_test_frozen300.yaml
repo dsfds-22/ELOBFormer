@@ -1,0 +1,45 @@
+version: V4.3
+status: frozen_final_postprocessor
+task: emergency_outer_boundary_output_gate
+revision: ratio_min_030_20260805_final_test_execution
+
+image_size: [450, 800]
+
+boundary_model:
+  backend: native
+  deploy_band_only: true
+  config: configs/final_test/a2_band_edge03_heatmap01_final_test_frozen300.yaml
+  checkpoint: weights/a2_band_edge03_heatmap01.pt
+  band_threshold: 0.5
+
+lane_model:
+  checkpoint: weights/project_lane_detector.pth
+  source: model
+
+v2_geometry_gate:
+  roi_start: 0.50
+  roi_end: 0.90
+  num_intervals: 10
+  sampling_mode: uniform
+  perspective_gamma: 1.35
+  window_radius: 4
+  min_valid_rows: 3
+  ratio_min: 0.30
+  ratio_max: 2.0
+  ratio_high_decay: 0.5
+  stable_cv: 0.20
+  cv_decay: 0.30
+  gate_mode: reliable
+
+v4_3_presence_gate:
+  checkpoint: weights/v4_presence_verifier.pt
+  threshold: 0.05
+  threshold_calibration_split: val
+  threshold_calibration: results/system/temporal_calibration.json
+  smoothing: median
+  window: 3
+  max_frame_gap: 5
+
+evaluation:
+  boundary_tolerance: 5.0
+  protocol: one_time_final_test_frozen300

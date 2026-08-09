@@ -1,0 +1,23 @@
+boundary_model:
+  config: configs/main/a2_band_edge03_heatmap01.yaml
+  checkpoint: weights/a2_band_edge03_heatmap01.pt
+
+model:
+  hidden_dim: 256
+  dropout: 0.30
+
+train:
+  output_dir: runs/emergency_boundary/v4_presence_verifier_frozen_heatmap01_v1
+  epochs: 30
+  batch_size: 16
+  augmentation: basic
+  num_workers: 0
+  lr: 0.0003
+  weight_decay: 0.001
+  early_stop_patience: 8
+  min_val_specificity: 0.90
+  seed: 42
+  group_fields:
+    - reviewed_segment_id
+    - capture_session
+    - prefix

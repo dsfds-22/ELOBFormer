@@ -1,0 +1,49 @@
+﻿{
+    "root":  "datasets/emergency_outer_boundary_final_test_fixed12_v1_frozen300",
+    "samples":  300,
+    "positive_samples":  208,
+    "negative_samples":  92,
+    "expected_size":  [
+                          800,
+                          450
+                      ],
+    "band_values":  [
+                        0,
+                        255
+                    ],
+    "edge_values":  [
+                        0,
+                        255
+                    ],
+    "positive_band_pixels":  {
+                                 "min":  3630,
+                                 "mean":  4914.759615384615,
+                                 "max":  5838
+                             },
+    "positive_edge_pixels":  {
+                                 "min":  1906,
+                                 "mean":  2613.5096153846152,
+                                 "max":  3140
+                             },
+    "splits":  {
+                   "train":  {
+                                 "samples":  0,
+                                 "positive":  0,
+                                 "negative":  0
+                             },
+                   "val":  {
+                               "samples":  0,
+                               "positive":  0,
+                               "negative":  0
+                           },
+                   "test":  {
+                                "samples":  300,
+                                "positive":  208,
+                                "negative":  92
+                            }
+               },
+    "issue_count":  0,
+    "issues":  [
+
+               ]
+}

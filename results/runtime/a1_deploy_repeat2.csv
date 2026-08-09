@@ -1,0 +1,2 @@
+model,params_m,images,per_image_ms,fps,peak_memory_mb,band_max_abs_diff
+A1 Band-only Deploy r2,14.266305,100,10.213738000020385,97.90734792668503,472.447265625,0.0
