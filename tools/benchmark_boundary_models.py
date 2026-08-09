@@ -23,7 +23,7 @@ except ModuleNotFoundError:
     tqdm_stub.tqdm = lambda iterable=None, *args, **kwargs: iterable
     sys.modules["tqdm"] = tqdm_stub
 from train_emergency_boundary_baseline import (
-    SegFormerBandOnlyDeployment,
+    ELOBFormerDeployment,
     build_model_from_config,
 )
 
@@ -133,7 +133,7 @@ def benchmark_torch_model(
     band_max_abs_diff = 0.0
     if deploy_band_only:
         full_model = model
-        model = SegFormerBandOnlyDeployment(full_model).to(device).eval()
+        model = ELOBFormerDeployment(full_model).to(device).eval()
         full_model.eval()
         with torch.no_grad():
             full_outputs = full_model(input_tensor)
