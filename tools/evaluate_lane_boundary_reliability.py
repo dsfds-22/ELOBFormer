@@ -47,7 +47,7 @@ from tools.evaluate_raw_boundary_metrics import boundary_metrics
 from tools.v4_presence_verifier import load_v4_presence_verifier
 from train_emergency_boundary_baseline import (
     BoundaryDataset,
-    SegFormerBandOnlyDeployment,
+    ELOBFormerDeployment,
     band_logits,
     build_model_from_config,
 )
@@ -271,7 +271,7 @@ def load_boundary_model(cfg, checkpoint_path, device, deploy_band_only=False):
     state_dict = checkpoint["model"] if isinstance(checkpoint, dict) and "model" in checkpoint else checkpoint
     model.load_state_dict(state_dict)
     if deploy_band_only:
-        model = SegFormerBandOnlyDeployment(model).to(device)
+        model = ELOBFormerDeployment(model).to(device)
     model.eval()
     return model
 

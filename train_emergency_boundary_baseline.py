@@ -1,3 +1,5 @@
+"""Train and evaluate the ELOBFormer A0/A1/A2 model family."""
+
 import argparse
 import csv
 import io
@@ -505,6 +507,14 @@ class SegFormerBandOnlyDeployment(nn.Module):
         )
 
 
+# Public ELOBFormer names. The legacy class names remain available so released
+# checkpoints and third-party scripts continue to load without modification.
+ELOBFormerA0 = SegFormerBandBaseline
+ELOBFormerA1 = SegFormerBandEdgeHead
+ELOBFormerA2 = SegFormerBandEdgeHeatmapHead
+ELOBFormerDeployment = SegFormerBandOnlyDeployment
+
+
 
 
 
@@ -526,7 +536,7 @@ class SegFormerBandOnlyDeployment(nn.Module):
 
 
 def build_model_from_config(cfg):
-    name = str(cfg["model"].get("name", "segformer_b1_band_baseline")).lower()
+    name = str(cfg["model"].get("name", "elobformer_a0")).lower()
     variant = str(cfg["model"].get("variant", "b1")).lower()
     if variant != "b1":
         raise ValueError("The public release supports the paper's B1 models only.")
@@ -535,12 +545,21 @@ def build_model_from_config(cfg):
         "dropout": float(cfg["model"].get("dropout", 0.1)),
         "variant": variant,
     }
-    if name in {"segformer_b1_band_edge_heatmap", "segformer_b1_band_edge_heatmap_aux"}:
-        return SegFormerBandEdgeHeatmapHead(**common)
-    if name in {"segformer_b1_band_edge", "segformer_b1_band_edge_head", "segformer_b1_boundary_aux"}:
-        return SegFormerBandEdgeHead(**common)
-    if name == "segformer_b1_band_baseline":
-        return SegFormerBandBaseline(**common)
+    if name in {
+        "elobformer_a2",
+        "segformer_b1_band_edge_heatmap",
+        "segformer_b1_band_edge_heatmap_aux",
+    }:
+        return ELOBFormerA2(**common)
+    if name in {
+        "elobformer_a1",
+        "segformer_b1_band_edge",
+        "segformer_b1_band_edge_head",
+        "segformer_b1_boundary_aux",
+    }:
+        return ELOBFormerA1(**common)
+    if name in {"elobformer_a0", "segformer_b1_band_baseline"}:
+        return ELOBFormerA0(**common)
     raise ValueError(f"Unsupported released model: {name}")
 
 
@@ -1222,7 +1241,9 @@ def append_metrics(path, epoch, train_metrics, val_metrics):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Train SegFormer-B1 style baseline for emergency outer boundary.")
+    parser = argparse.ArgumentParser(
+        description="Train ELOBFormer variants for emergency-lane outer-boundary detection."
+    )
     parser.add_argument("--config", default="configs/main/a0_band_only.yaml")
     parser.add_argument("--epochs", type=int, default=None)
     parser.add_argument("--batch-size", type=int, default=None)

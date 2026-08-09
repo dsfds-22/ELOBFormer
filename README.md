@@ -1,22 +1,25 @@
-# Emergency Outer Boundary Detection
+# ELOBFormer
 
-Research code for detecting the outer boundary of highway emergency lanes in
-maintenance, accident, and other visually complex scenes. The repository
-contains the SegFormer-B1 experiments used in the paper, unified boundary
-evaluation, external MMSegmentation baselines, and the complete frozen V4.3
-reliability-validation and output-gating system.
+ELOBFormer is a task-specific SegFormer-B1 framework for detecting the outer
+physical boundary of expressway emergency lanes in visually complex scenes.
+This repository contains the paper's multilevel-supervision experiments,
+unified boundary evaluation, external MMSegmentation baselines, and the frozen
+V4.3 reliability-validation and selective-output system.
 
 ## Scope
 
-- **A0**: SegFormer-B1 with a fixed 12 px Band target.
-- **A1**: A0 with a deep Boundary Head and Thin Edge auxiliary supervision.
-- **A2**: A1 with low-weight Soft Heatmap auxiliary supervision.
-- **V4.3**: A2 Band-only deployment output + project lane detector + V2
+- **ELOBFormer-A0**: SegFormer-B1 with a fixed 12 px band target.
+- **ELOBFormer-A1**: A0 with a convolutional band head and 5 px thin-edge
+  auxiliary supervision; this is the stable core model identified by the
+  controlled experiments.
+- **ELOBFormer-A2**: A1 with low-weight soft-heatmap auxiliary supervision;
+  this is retained as an exploratory extension rather than the primary model.
+- **ELOBFormer-V4.3**: ELOBFormer-A2 band-only deployment output + project lane detector + V2
   lane-geometry validation + semantic presence verification + causal
   three-frame median gating.
 - **External baselines**: DeepLabV3+ R50 and PIDNet-S through MMSegmentation.
 
-V4.3 is a selective output gate. It does not move or refit the raw boundary.
+ELOBFormer-V4.3 is a selective-output gate. It does not move or refit the raw boundary.
 Only predictions accepted by the geometry and presence checks are returned as
 the final `right_boundary` output.
 
@@ -52,8 +55,12 @@ MMSegmentation 1.2.2, MMEngine 0.10.7, and MMCV-Lite 2.1.0.
 
 ## Data
 
-The public dataset is distributed separately to keep Git history small. Place
-the generated development and Final-Test datasets at:
+The source videos, extracted frames, and annotations are not redistributed
+because their authorization does not permit republication on other platforms.
+This repository contains only non-image manifests, protocol metadata, and
+reproduction code. Users must prepare equivalent data from sources they are
+authorized to use and place the generated development and Final-Test datasets
+at:
 
 ```text
 datasets/emergency_outer_boundary_grouped_fixed12_v2_clean601
@@ -81,8 +88,9 @@ python tools/convert_labelme_boundary_to_masks.py `
 ```
 
 Use the frozen CSV files under `dataset_manifests/` to reproduce the official
-splits. The raw LabelMe data and frozen protocol files are supplied in the
-separate dataset artifact.
+split logic and evaluation protocol. File names and hashes document the frozen
+experiments but do not grant access to, or permission to redistribute, the
+underlying images.
 
 ## Weights
 
@@ -141,7 +149,7 @@ Formal masks use the frozen protocol: resize probability to 800x450, apply
 `probability >= 0.5`, and save binary values 0/255. Boundary F1 uses a 5 px
 tolerance.
 
-## Run the complete V4.3 system
+## Run the complete ELOBFormer-V4.3 system
 
 ```powershell
 python tools/run_final_v4_3_gate.py `
@@ -150,7 +158,7 @@ python tools/run_final_v4_3_gate.py `
   --out-dir outputs/v4_3_test
 ```
 
-Frozen V4.3 parameters include `ratio_min=0.30`, `ratio_max=2.0`, ten
+Frozen ELOBFormer-V4.3 parameters include `ratio_min=0.30`, `ratio_max=2.0`, ten
 bottom-up image-space intervals, presence threshold 0.05, and a causal median
 window of three frames.
 
