@@ -161,6 +161,9 @@ window of three frames.
 - Reported metrics, Final-Test results, runtime measurements, and qualitative
   figures are under `results/`.
 - Final-Test was evaluated only after models and gate thresholds were frozen.
+- The retained [Final-Test cross-split near-duplicate audit](audit/FINAL_TEST_NEAR_DUPLICATE_AUDIT.md)
+  found no SHA-256 exact duplicate or 64-bit dHash candidate at Hamming
+  distance `<= 2` between Final-Test and the complete development set.
 
 ## License and attribution
 
