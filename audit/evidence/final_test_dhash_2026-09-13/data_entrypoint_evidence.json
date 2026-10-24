@@ -1,0 +1,84 @@
+{
+  "missing_pair_recoverability": {
+    ".jpg": {
+      "audit_work_exists": true,
+      "audit_work_sha_matches": true,
+      "zip_sha_matches": true
+    },
+    ".json": {
+      "audit_work_exists": true,
+      "audit_work_sha_matches": true,
+      "zip_sha_matches": true
+    }
+  },
+  "source_validation": {
+    "decoded_sizes": {
+      "(800, 450)": 4427
+    },
+    "failures": [],
+    "label_presence_mismatch": [],
+    "boundary_out_of_bounds_samples": []
+  },
+  "dhash_screen": [
+    {
+      "left": "train",
+      "right": "val",
+      "minimum_dhash_distance": 11,
+      "candidates_at_most_2": 0,
+      "exact_hash_overlap": 0
+    },
+    {
+      "left": "train",
+      "right": "test",
+      "minimum_dhash_distance": 6,
+      "candidates_at_most_2": 0,
+      "exact_hash_overlap": 0
+    },
+    {
+      "left": "train",
+      "right": "final_test",
+      "minimum_dhash_distance": 7,
+      "candidates_at_most_2": 0,
+      "exact_hash_overlap": 0
+    },
+    {
+      "left": "val",
+      "right": "test",
+      "minimum_dhash_distance": 7,
+      "candidates_at_most_2": 0,
+      "exact_hash_overlap": 0
+    },
+    {
+      "left": "val",
+      "right": "final_test",
+      "minimum_dhash_distance": 10,
+      "candidates_at_most_2": 0,
+      "exact_hash_overlap": 0
+    },
+    {
+      "left": "test",
+      "right": "final_test",
+      "minimum_dhash_distance": 7,
+      "candidates_at_most_2": 0,
+      "exact_hash_overlap": 0
+    }
+  ],
+  "empty_split_conversion": {
+    "command": "C:\\Users\\AYC\\AppData\\Local\\Programs\\Python\\Python313\\python.exe \"D:\\deeplearning\\Lane-Detection - 1\\release\\repository\\tools\\convert_labelme_boundary_to_masks.py\" --root \"D:\\deeplearning\\Lane-Detection - 1\\project_analysis\\entrypoint_fixture\\raw\" --out \"D:\\deeplearning\\Lane-Detection - 1\\project_analysis\\entrypoint_fixture\\converted\" --split-dir \"D:\\deeplearning\\Lane-Detection - 1\\project_analysis\\entrypoint_fixture\\protocol\" --fixed-band-width 12 --edge-width 5 --heatmap-radius 9 --heatmap-sigma 3 --copy-images --copy-json",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"D:\\deeplearning\\Lane-Detection - 1\\release\\repository\\tools\\convert_labelme_boundary_to_masks.py\", line 397, in <module>\n    main()\n    ~~~~^^\n  File \"D:\\deeplearning\\Lane-Detection - 1\\release\\repository\\tools\\convert_labelme_boundary_to_masks.py\", line 349, in main\n    output_fields = list(output_rows[0])\n                         ~~~~~~~~~~~^^^\nIndexError: list index out of range\n"
+  },
+  "readme_gt_dir_argument": {
+    "command": "C:\\Users\\AYC\\AppData\\Local\\Programs\\Python\\Python313\\python.exe \"D:\\deeplearning\\Lane-Detection - 1\\release\\repository\\tools\\evaluate_raw_boundary_metrics.py\" --gt-dir unused --pred-dir unused --out-dir \"D:\\deeplearning\\Lane-Detection - 1\\project_analysis\\entrypoint_fixture\\unused\"",
+    "exit_code": 2,
+    "stdout": "",
+    "stderr": "usage: evaluate_raw_boundary_metrics.py [-h] [--dataset-root DATASET_ROOT]\n                                        [--split SPLIT]\n                                        [--split-csv SPLIT_CSV]\n                                        --pred-dir PRED_DIR --out-dir OUT_DIR\n                                        [--threshold THRESHOLD]\n                                        [--tolerance TOLERANCE]\nevaluate_raw_boundary_metrics.py: error: unrecognized arguments: --gt-dir unused\n"
+  },
+  "missing_prediction_fallback": {
+    "command": "C:\\Users\\AYC\\AppData\\Local\\Programs\\Python\\Python313\\python.exe \"D:\\deeplearning\\Lane-Detection - 1\\release\\repository\\tools\\evaluate_raw_boundary_metrics.py\" --dataset-root \"D:\\deeplearning\\Lane-Detection - 1\\project_analysis\\entrypoint_fixture\\converted\" --pred-dir \"D:\\deeplearning\\Lane-Detection - 1\\project_analysis\\entrypoint_fixture\\empty_predictions\" --out-dir \"D:\\deeplearning\\Lane-Detection - 1\\project_analysis\\entrypoint_fixture\\metrics\"",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"D:\\deeplearning\\Lane-Detection - 1\\release\\repository\\tools\\evaluate_raw_boundary_metrics.py\", line 373, in <module>\n    main()\n    ~~~~^^\n  File \"D:\\deeplearning\\Lane-Detection - 1\\release\\repository\\tools\\evaluate_raw_boundary_metrics.py\", line 265, in main\n    pred_mask = np.zeros((int(row[\"height\"]), int(row[\"width\"])), dtype=np.uint8)\n                              ~~~^^^^^^^^^^\nKeyError: 'height'\n"
+  }
+}
