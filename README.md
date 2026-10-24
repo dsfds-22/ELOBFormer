@@ -52,8 +52,13 @@ MMSegmentation 1.2.2, MMEngine 0.10.7, and MMCV-Lite 2.1.0.
 
 ## Data
 
-The public dataset is distributed separately to keep Git history small. Place
-the generated development and Final-Test datasets at:
+> **Dataset availability:** The dataset is not publicly available at this
+> time（数据集暂不公开）.
+
+The repository retains the frozen manifests and protocol metadata required to
+document the experiments, but it does not distribute the source images or
+annotations. If access is provided separately, place the generated development
+and Final-Test datasets at:
 
 ```text
 datasets/emergency_outer_boundary_grouped_fixed12_v2_clean601
